@@ -1,0 +1,702 @@
+/* 全局重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans SC", "微软雅黑", sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #fff;
+}
+
+/* 背景层（雨天/晴天切换） */
+.bg-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: all 1.5s ease;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 雨天背景 */
+.rain-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                      url('https://picsum.photos/id/1036/1920/1080');
+}
+
+/* 晴天背景 */
+.sunny-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), 
+                      url('https://picsum.photos/id/1019/1920/1080');
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 背景激活状态 */
+.bg-layer.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部 */
+.header {
+    text-align: center;
+    margin: 40px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.title {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+    letter-spacing: 5px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #e9ecef;
+    font-weight: 300;
+}
+
+/* 内容区 */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* 海报 */
+.poster-box {
+    flex: 1 1 300px;
+    text-align: center;
+}
+
+.poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    transition: transform 0.5s ease;
+}
+
+.poster:hover {
+    transform: scale(1.03);
+}
+
+/* 天气卡片 */
+.weather-card {
+    flex: 1 1 400px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.weather-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #a7c0ff;
+    transition: all 1s ease;
+}
+
+.weather-status {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+}
+
+.weather-desc {
+    font-size: 18px;
+    color: #e9ecef;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* 切换按钮 */
+.switch-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.switch-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+}
+
+.switch-btn:active {
+    transform: translateY(1px);
+}
+
+/* 电影简介 */
+.movie-intro {
+    flex: 1 1 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.movie-intro h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #f8f9fa;
+    border-left: 4px solid #ff7e5f;
+    padding-left: 10px;
+}
+
+.movie-intro p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #e9ecef;
+    margin-bottom: 15px;
+}
+
+/* 底部 */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #adb5bd;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 加载动画 */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease;
+}
+
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-icon {
+    font-size: 60px;
+    color: #a7c0ff;
+    animation: float 2s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+.loader-text {
+    font-size: 18px;
+    color: #e9ecef;
+    letter-spacing: 2px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* 音乐控制按钮 */
+.music-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 剧情高潮模块 */
+.climax-section {
+    flex: 1 1 100%;
+    margin: 30px 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.climax-section h3 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #f8f9fa;
+    border-left: 4px solid #a7c0ff;
+    padding-left: 10px;
+}
+
+/* 剧情进度条 */
+.climax-progress {
+    margin-bottom: 30px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #a7c0ff, #ff7e5f);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    color: #adb5bd;
+    font-size: 12px;
+}
+
+/* 剧情卡片容器 */
+.climax-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* 剧情卡片 */
+.climax-card {
+    flex: 1 1 280px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.5s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.climax-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* 剧情卡片图标 */
+.climax-icon {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #667eea, #a7c0ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+/* 剧情卡片图片 */
+.climax-img {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.climax-card:hover .climax-img {
+    transform: scale(1.05);
+}
+
+/* 剧情卡片信息 */
+.climax-info {
+    padding: 20px;
+}
+
+.climax-info h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+}
+
+.climax-info p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e9ecef;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+/* 进入按钮 */
+.enter-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #a7c0ff, #667eea);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.climax-card:hover .enter-btn {
+    background: linear-gradient(135deg, #667eea, #5a67d8);
+    transform: translateX(5px);
+}
+
+/* 子网页样式 */
+.climax-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 子网页内容容器 */
+.climax-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* 子网页标题 */
+.climax-title {
+    text-align: center;
+    margin: 30px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.climax-title h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+}
+
+.climax-title p {
+    font-size: 16px;
+    color: #e9ecef;
+    font-style: italic;
+}
+
+/* 剧情详情 */
+.climax-content {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* 子网页图片轮播 */
+.carousel {
+    position: relative;
+    width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.carousel-imgs {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+/* 轮播控制按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-prev {
+    left: 15px;
+}
+
+.carousel-next {
+    right: 15px;
+}
+
+/* 轮播指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: #fff;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* 经典台词高亮 */
+.quote {
+    display: inline-block;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ff7e5f;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 18px;
+    color: #feb47b;
+}
+
+/* 返回主页按钮 */
+.back-home {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.back-home:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 126, 95, 0.6);
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+}
+
+/* 剧情导航按钮 */
+.climax-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+    gap: 20px;
+}
+
+.nav-btn {
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.prev-btn {
+    border: 1px solid rgba(167, 192, 255, 0.5);
+}
+
+.next-btn {
+    border: 1px solid rgba(254, 180, 123, 0.5);
+}
+
+/* 子网页加载动画适配 */
+.climax-page .loader {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .weather-icon {
+        font-size: 60px;
+    }
+
+    .weather-status {
+        font-size: 28px;
+    }
+
+    .music-btn {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 15px;
+    }
+
+    .climax-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .carousel {
+        max-height: 300px;
+    }
+
+    .climax-title h1 {
+        font-size: 28px;
+    }
+
+    .climax-content {
+        padding: 20px;
+    }
+
+    .climax-content img {
+        max-height: 300px;
+    }
+
+    .climax-nav {
+        flex-direction: column;
+    }
+}
+
+/* 闪烁动画 */
+.blink {
+    animation: blink 0.8s ease-in-out;
+}
+
+@keyframes blink {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+/* 新海诚作品入口样式 */
+.shinkai-entry {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.shinkai-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #a7c0ff, #667eea);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.shinkai-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+/* 新海诚导航按钮样式 */
+.shinkai-nav-btn {
+    background: rgba(167, 192, 255, 0.2);
+    border-color: rgba(167, 192, 255, 0.7);
+}
+
+.shinkai-nav-btn:hover {
+    background: rgba(167, 192, 255, 0.4);
+}
+
+/* 响应式调整：导航按钮换行 */
+@media (max-width: 768px) {
+    .climax-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

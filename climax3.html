@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧情高潮 - 穿越云层的救赎 | 天气之子</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body class="climax-page">
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fa fa-heart loader-icon"></i>
+            <p class="loader-text">加载中... 救いが来ます</p>
+        </div>
+    </div>
+
+    <!-- 背景音乐（延续主页状态） -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="https://cdn.freesound.org/previews/514/514502_10226510-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 晴天+云层背景（贴合剧情） -->
+    <div class="bg-layer" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://tse1-mm.cn.bing.net/th/id/OIP-C.5gxs6joHoGdaEujEQ-5_bAHaEK?w=280&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3'); background-size: cover; background-position: center; position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+
+    <div class="climax-container">
+        <header class="climax-title">
+            <h1>穿越云层的救赎</h1>
+            <p>「比起晴空万里，我更需要你」—— 森岛帆高</p>
+            
+            <!-- 音乐控制按钮 -->
+            <button class="music-btn" id="musicBtn">
+                <i class="fa fa-volume-off" aria-hidden="true"></i> 开启音乐
+            </button>
+        </header>
+
+        <main class="climax-content">
+            <!-- 图片轮播 -->
+            <div class="carousel">
+                <div class="carousel-imgs">
+                    <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.bP4-DtJzw6sLUnNsabrwDQHaEK?w=291&h=184&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="帆高拯救阳菜1" class="carousel-img">
+                    <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.qrFpLPcO0n2evPDKPojWHQHaEK?w=286&h=184&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="帆高拯救阳菜2" class="carousel-img">
+                    <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.9M1wqE5pSCrzqHGVdVZBNQAAAA?w=251&h=178&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="帆高拯救阳菜3" class="carousel-img">
+                </div>
+                <button class="carousel-btn carousel-prev">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-btn carousel-next">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <button class="carousel-indicator active"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                </div>
+            </div>
+
+            <p>阳菜留下一封信后，独自前往当初展现晴女之力的废弃楼顶，选择牺牲自己让东京放晴。信中写道：「能遇到你，是我这辈子最幸福的事。请原谅我的自私，我想让大家重新看到阳光。」</p>
+            <p>帆高发现信后，不顾一切地冲向楼顶。此时阳菜的身体已经几乎完全透明，周围的空间开始扭曲，云层形成了一个巨大的漩涡，将阳菜向天空中吸去。帆高在暴雨中狂奔，冲破了警察的阻拦，最终爬上楼顶，却只看到阳菜的身影逐渐消失在云层里。</p>
+            <p>在绝望之际，帆高想起了阳菜曾经说过的话：「只要心向着对方，就能感受到彼此的存在。」他纵身一跃，跳入了云层漩涡中，穿越了现实与天气的边界。</p>
+            <span class="quote">「阳菜！我不要什么晴天，我只要你活着！比起晴空万里，我更需要你！」—— 森岛帆高</span>
+            <p>在云层之上的「天气世界」，帆高找到了即将完全消失的阳菜。他紧紧抱住阳菜，喊出了内心最真实的想法。他的执念打破了天气的规则，阳菜的身体逐渐恢复实体。两人一起从云层中坠落，回到了东京。</p>
+            <p>虽然东京的暴雨没有停止，城市依然被洪水淹没，但人们开始适应这样的天气，继续生活。而帆高和阳菜，在这场与天气的对抗中，找到了彼此存在的意义——比起所谓的「正常世界」，相互陪伴才是最重要的。</p>
+        </main>
+
+        <a href="index.html" class="back-home">
+            <i class="fa fa-arrow-left"></i> 返回主页
+        </a>
+
+        <!-- 剧情导航 -->
+        <div class="climax-nav">
+            <a href="climax2.html" class="nav-btn prev-btn">
+                <i class="fa fa-arrow-left"></i> 上一个高潮：东京的末日暴雨
+            </a>
+            <a href="index.html" class="nav-btn next-btn">
+                <i class="fa fa-home" aria-hidden="true"></i> 回到主页
+            </a>
+        <!-- 新海诚作品入口 -->
+        <div class="climax-nav">
+             <a href="climax4.html" class="nav-btn prev-btn">
+                <i class="fa fa-film" aria-hidden="true"></i> 探索新海诚的其他作品
+            </a>
+</div>
+    </div>
+      </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

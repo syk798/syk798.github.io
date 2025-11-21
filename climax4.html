@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新海诚 - 作品与风格 | 天气之子</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body class="climax-page">
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fa fa-film loader-icon"></i>
+            <p class="loader-text">加载中... 新海誠の世界</p>
+        </div>
+    </div>
+
+    <!-- 背景音乐（延续主页状态） -->
+    <audio id="backgroundMusic" loop preload="auto" muted>
+        <source src="M500004Og0M4A6RMy.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 新海诚风格背景（星空+渐变） -->
+    <div class="bg-layer" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('https://img0.baidu.com/it/u=1874251524,3520895164&fm=253&fmt=auto&app=138&f=JPEG?w=1080&h=1920'); background-size: cover; background-position: center; position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+
+    <div class="climax-container">
+        <header class="climax-title">
+            <h1>新海诚 · 作品与风格</h1>
+            <p>「我想通过动画，讲述人与人之间的羁绊」—— 新海诚</p>
+            
+            <!-- 音乐控制按钮 -->
+            <button class="music-btn" id="musicBtn">
+                <i class="fa fa-volume-off" aria-hidden="true"></i> 开启音乐
+            </button>
+        </header>
+
+        <main class="climax-content">
+            <!-- 新海诚简介 -->
+            <div class="shinkai-intro">
+                <h3>导演简介</h3>
+                <p>新海诚（Makoto Shinkai），1973年2月9日出生于日本长野县，是当代最具影响力的动画导演、编剧、制作人之一。早年从事游戏场景设计，2002年凭借独立制作的短篇动画《星之声》出道，以细腻的情感表达、唯美的画面风格和深刻的主题内核，被粉丝称为「新海诚美学」的代表。</p>
+                <p>他的作品擅长通过自然景观（天气、星空、列车）映射人物内心，聚焦青春期的孤独与羁绊，台词简洁却直击人心，画面每一帧都堪称壁纸级水准。</p>
+            </div>
+
+            <!-- 经典作品展示（带图片） -->
+            <div class="shinkai-works">
+                <h3>经典作品精选</h3>
+                <div class="works-grid">
+                    <!-- 秒速5厘米 -->
+                    <div class="work-card">
+                        <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.T-hNA-jrbja9OWZcDd2PYQHaKO?w=202&h=279&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="秒速5厘米" class="work-img">
+                        <div class="work-info">
+                            <h4>秒速5厘米（2007）</h4>
+                            <p>「樱花飘落的速度，是秒速5厘米」—— 三段式故事，讲述时间与距离对爱情的消磨，成为一代人的青春遗憾象征。</p>
+                        </div>
+                    </div>
+                    <!-- 你的名字。 -->
+                    <div class="work-card">
+                        <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.eZoWIPRG9ooM8CBLT4YcRwHaLG?w=202&h=303&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="你的名字。" class="work-img">
+                        <div class="work-info">
+                            <h4>你的名字。（2016）</h4>
+                            <p>「跨越时空的相遇与寻找」—— 奇幻设定与青春爱情结合，打破日本动画电影票房纪录，全球范围内掀起热潮。</p>
+                        </div>
+                    </div>
+                    <!-- 铃芽之旅 -->
+                    <div class="work-card">
+                        <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.2AT3cc1G8wSik_y2BSKxVgHaKb?w=202&h=285&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="铃芽之旅" class="work-img">
+                        <div class="work-info">
+                            <h4>铃芽之旅（2022）</h4>
+                            <p>「灾难后的治愈与成长」—— 以地震创伤为背景，讲述少女铃芽与闭门师草太的冒险，探讨记忆与救赎的主题。</p>
+                        </div>
+                    </div>
+                    <!-- 言叶之庭 -->
+                    <div class="work-card">
+                        <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.ejl67ULph0oeqOPdx_tEaQHaJZ?w=202&h=257&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="言叶之庭" class="work-img">
+                        <div class="work-info">
+                            <h4>言叶之庭（2013）</h4>
+                            <p>「雨天里的孤独邂逅」—— 仅45分钟的短篇，以雨景和制鞋为线索，讲述成年人与少年的灵魂共鸣，画面美学达到巅峰。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 创作风格总结 -->
+            <div class="shinkai-style">
+                <h3>新海诚美学核心</h3>
+                <ul>
+                    <li><strong>自然与情感的绑定</strong>：用天气（雨、雪、晴天）、星空、列车等元素隐喻人物情绪，如《天气之子》的雨象征孤独与羁绊。</li>
+                    <li><strong>细腻的细节刻画</strong>：雨滴、花瓣、城市街景等细节渲染极致，每一帧都可作为壁纸。</li>
+                    <li><strong>直击人心的台词</strong>：简洁却充满力量，如「愿我们在彼此看不见的世界里熠熠生辉」（《秒速5厘米》）。</li>
+                    <li><strong>青春与成长主题</strong>：聚焦青春期的孤独、相遇、离别，引发观众共鸣。</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- 返回主页按钮 -->
+        <a href="index.html" class="back-home">
+            <i class="fa fa-arrow-left"></i> 返回主页
+        </a>
+
+        <!-- 剧情导航（关联其他页面） -->
+        <div class="climax-nav">
+            <a href="index.html" class="nav-btn prev-btn">
+                <i class="fa fa-home" aria-hidden="true"></i> 回到主页
+            </a>
+            <a href="climax1.html" class="nav-btn next-btn">
+                查看《天气之子》剧情 <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

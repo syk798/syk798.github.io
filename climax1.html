@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧情高潮 - 晴女之力觉醒 | 天气之子</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body class="climax-page">
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fa fa-sun-o loader-icon"></i>
+            <p class="loader-text">加载中... 晴れが来ます</p>
+        </div>
+    </div>
+
+    <!-- 背景音乐（延续主页状态） -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="https://cdn.freesound.org/previews/514/514502_10226510-lq.mp3" type="audio/mpeg">
+    </audio>
+<div class="bg-layer" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://tse1-mm.cn.bing.net/th/id/OIP-C.EWisSu9bLoSnHBVrM6S3LAHaEK?w=307&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3'); background-size: cover; background-position: center; position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+    <!-- 晴天背景（贴合剧情） -->
+    <div class="bg-layer sunny-bg active"></div>
+    <div class="bg-layer rain-bg"></div>
+
+    <div class="climax-container">
+        <header class="climax-title">
+            <h1>晴女之力觉醒</h1>
+            <p>「只要祈祷，天气就会变晴」—— 天野阳菜</p>
+            
+            <!-- 音乐控制按钮 -->
+            <button class="music-btn" id="musicBtn">
+                <i class="fa fa-volume-off" aria-hidden="true"></i> 开启音乐
+            </button>
+        </header>
+
+        <main class="climax-content">
+            <!-- 图片轮播 -->
+            <div class="carousel">
+                <div class="carousel-imgs">
+                    <img src="https://p2.ssl.qhimgs1.com/sdr/400__/t01c0e94aeeb36ac998.jpg" alt="阳菜祈祷放晴1" class="carousel-img">
+                    <img src="https://ps.ssl.qhimg.com/sdmt/356_266_100/t0113520c9980b7ec93.webp" alt="阳菜祈祷放晴2" class="carousel-img">
+                    <img src="https://p2.ssl.qhimgs1.com/sdr/400__/t01e983fbd32287bae8.jpg" alt="阳菜祈祷放晴3" class="carousel-img">
+                </div>
+                <button class="carousel-btn carousel-prev">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                </button>
+                <button class="carousel-btn carousel-next">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <button class="carousel-indicator active"></button>
+                    <button class="carousel-indicator"></button>
+                    <button class="carousel-indicator"></button>
+                </div>
+            </div>
+
+            <p>帆高与阳菜在寻找「晴天」的过程中，来到了一栋废弃大楼的楼顶。当时东京已连续降雨数月，阴沉的天空让人压抑。阳菜告诉帆高，自己从小就能感受到天气的「意志」，只要双手合十真诚祈祷，就能让局部地区放晴。</p>
+            <p>半信半疑的帆高看着阳菜闭上眼睛，双手合十，口中默念着祈祷的话语。突然，周围的风开始流动，云层逐渐散开，一束金色的阳光穿透云层洒在楼顶上，雨水奇迹般地停止了。</p>
+            <span class="quote">「你看，真的放晴了！」—— 天野阳菜</span>
+            <p>这是阳菜第一次在别人面前完整展现晴女的力量，也是两人命运交织的开始。帆高被这不可思议的场景震撼，而阳菜则因为力量的使用，脸上露出了一丝疲惫——她还不知道，每一次操控天气，都在消耗着自己的生命。</p>
+            <p>这次「奇迹」让两人决定利用阳菜的能力，为需要晴天的人提供帮助，以此赚取生活费，也让阴沉的东京多了一丝温暖的希望。</p>
+        </main>
+
+        <!-- 返回主页按钮 -->
+        <a href="index.html" class="back-home">
+            <i class="fa fa-arrow-left"></i> 返回主页
+        </a>
+
+        <!-- 剧情导航 -->
+        <div class="climax-nav">
+            <a href="index.html" class="nav-btn prev-btn">
+                <i class="fa fa-home" aria-hidden="true"></i> 回到主页
+            </a>
+            <a href="climax2.html" class="nav-btn next-btn">
+                下一个高潮：东京的末日暴雨 <i class="fa fa-arrow-right"></i>
+            </a>
+        <!-- 新海诚作品入口 -->
+<div class="shinkai-entry">
+    <a href="climax4.html" class="shinkai-btn">
+        <i class="fa fa-film" aria-hidden="true"></i> 探索新海诚的其他作品
+    </a>
+</div>
+    </div>
+      </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

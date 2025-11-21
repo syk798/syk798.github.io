@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气之子 - 天気の子</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <i class="fa fa-cloud-rain loader-icon"></i>
+            <p class="loader-text">加载中... 天気を待っています</p>
+        </div>
+    </div>
+<div class="bg-layer" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://tse3-mm.cn.bing.net/th/id/OIP-C.RodqT7tPoVc-UWKc4aUZ9QHaEL?w=328&h=184&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3'); background-size: cover; background-position: center; position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1;"></div>
+    <!-- 背景音乐（自动播放，静音默认开启） -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        <source src="https://cdn.freesound.org/previews/514/514502_10226510-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="bg-layer rain-bg active"></div>
+    <div class="bg-layer sunny-bg"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">天気の子</h1>
+            <p class="subtitle">天气之子 · あの日、空を裂いた少年と少女の物語</p>
+            
+            <!-- 音乐控制按钮 -->
+            <button class="music-btn" id="musicBtn">
+                <i class="fa fa-volume-off" aria-hidden="true"></i> 开启音乐
+            </button>
+        </header>
+
+        <main class="content">
+            <div class="poster-box">
+                <img src="https://tse3-mm.cn.bing.net/th/id/OIP-C.PNjy5sUTYQYXFLwB3hKFnQHaEK?w=307&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3" alt="天气之子海报" class="poster" id="moviePoster">
+            </div>
+
+            <div class="weather-card">
+                <div class="weather-icon">
+                    <i class="fa fa-cloud-rain" aria-hidden="true"></i>
+                </div>
+                <div class="weather-info">
+                    <h2 class="weather-status">雨天模式</h2>
+                    <p class="weather-desc">「天气，是神明的心情」—— 阳菜</p>
+                </div>
+                <button class="switch-btn" id="switchWeather">
+                    <i class="fa fa-sun-o" aria-hidden="true"></i> 触发晴女之力
+                </button>
+            </div>
+
+            <div class="movie-intro">
+                <h3>电影简介</h3>
+                <p>《天气之子》是新海诚执导、CoMix Wave Films负责制作的动画电影，于2019年7月19日在日本上映。故事讲述了离家出走的少年森岛帆高，与能操控天气的少女天野阳菜相遇后，在阴雨连绵的东京发生的奇幻冒险。</p>
+                <p>「比起晴空万里，我更需要你」—— 帆高</p>
+            </div>
+
+            <!-- 剧情高潮模块 -->
+            <div class="climax-section">
+                <h3>剧情高潮精选</h3>
+                
+                <!-- 剧情进度条 -->
+                <div class="climax-progress">
+                    <div class="progress-track">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="progress-labels">
+                        <span>相遇觉醒</span>
+                        <span>暴雨危机</span>
+                        <span>救赎结局</span>
+                    </div>
+                </div>
+
+                <div class="climax-cards">
+                    <!-- 剧情卡片1 -->
+                    <a href="climax1.html" class="climax-card" data-climax="1">
+                        <div class="climax-icon">
+                            <i class="fa fa-sun-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="climax-img" style="background-image: url('https://picsum.photos/id/1015/600/400');"></div>
+                        <div class="climax-info">
+                            <h4>晴女之力觉醒</h4>
+                            <p>在废弃楼顶，阳菜双手合十祈祷，天空瞬间放晴...</p>
+                            <span class="enter-btn">点击查看 <i class="fa fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <!-- 剧情卡片2 -->
+                    <a href="climax2.html" class="climax-card" data-climax="2">
+                        <div class="climax-icon">
+                            <i class="fa fa-tint" aria-hidden="true"></i>
+                        </div>
+                        <div class="climax-img" style="background-image: url('https://picsum.photos/id/1036/600/400');"></div>
+                        <div class="climax-info">
+                            <h4>东京的末日暴雨</h4>
+                            <p>雨势失控，城市被洪水淹没，阳菜得知自己是「天气祭品」...</p>
+                            <span class="enter-btn">点击查看 <i class="fa fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+                    <!-- 剧情卡片3 -->
+                    <a href="climax3.html" class="climax-card" data-climax="3">
+                        <div class="climax-icon">
+                            <i class="fa fa-heart" aria-hidden="true"></i>
+                        </div>
+                        <div class="climax-img" style="background-image: url('https://picsum.photos/id/1019/600/400');"></div>
+                        <div class="climax-info">
+                            <h4>穿越云层的救赎</h4>
+                            <p>帆高冲破阻碍，在天空之上找到阳菜，喊出经典台词...</p>
+                            <span class="enter-btn">点击查看 <i class="fa fa-arrow-right"></i></span>
+                        </div>
+                    </a>
+              
+                <!-- 新海诚作品入口 -->
+<div class="fa fa-heart">
+    <a href="climax4.html" class="shinkai-btn">
+        <i class="fa fa-film" aria-hidden="true"></i> 探索新海诚的其他作品
+    </a>
+</div>  
+</div>
+        </main>
+
+        <footer class="footer">
+            <p>© 2025 天气之子 - 天気の子 | 基于新海诚动画改编</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
